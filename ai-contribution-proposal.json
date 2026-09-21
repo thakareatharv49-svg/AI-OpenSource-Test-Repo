@@ -1,0 +1,25 @@
+{
+  "summary": "Remove the outdated `exportalldat` command/function reference from the OpenRCT2 manual page (`distribution/man/openrct2.6`).",
+  "assumptions": [
+    "Source files were not supplied in the prompt, so exact existing lines cannot be verified directly.",
+    "The `exportalldat` function/CLI command has been deprecated or removed from OpenRCT2 and should no longer be documented in `openrct2.6`."
+  ],
+  "changes": [
+    {
+      "file": "distribution/man/openrct2.6",
+      "purpose": "Remove the `.TP` block and documentation entry describing the removed `exportalldat` function.",
+      "before": "",
+      "after": "Remove the roff block corresponding to exportalldat (e.g., .TP / .B exportalldat / description text).",
+      "explanation": "Deleting the `.TP` option definition for `exportalldat` ensures the manpage reflects the supported CLI options and commands accurately."
+    }
+  ],
+  "tests": [],
+  "verificationSteps": [
+    "Run `git grep -i exportalldat` across the repository to confirm all references in documentation have been removed.",
+    "Verify manpage formatting using `man -l distribution/man/openrct2.6` to ensure syntax formatting remains intact after removal."
+  ],
+  "warnings": [
+    "Actual source files were not supplied, so this proposal is preliminary.",
+    "Care must be taken when removing roff tags (.TP, .B, etc.) to avoid breaking formatting for adjacent command entries in the manpage."
+  ]
+}
