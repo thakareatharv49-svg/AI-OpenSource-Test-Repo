@@ -1,0 +1,42 @@
+{
+  "summary": "Proposal to add a new 'Tea Ceremony' theme inspired by Japanese tea rooms (matcha greens, bamboo/tatami earth tones, and deep charcoal accents) to KanaDojo.",
+  "assumptions": [
+    "Source code files were not provided in full context; exact implementation details are preliminary and based on repository analysis.",
+    "features/Preferences/data/themes.ts contains an array or object dictionary defining application themes conforming to a TypeScript interface.",
+    "features/Preferences/data/wallpapers.ts defines background wallpapers or themes associations if glass mode / custom backgrounds are enabled."
+  ],
+  "changes": [
+    {
+      "file": "features/Preferences/data/themes.ts",
+      "purpose": "Register the 'tea-ceremony' theme configuration with matcha green accents and earthy background/surface palettes.",
+      "before": "",
+      "after": "// Preliminary pseudocode based on repository analysis\nexport const teaCeremonyTheme: Theme = {\n  id: 'tea-ceremony',\n  name: 'Tea Ceremony',\n  category: 'Japanese Culture',\n  colors: {\n    primary: '#6b8e23', // Matcha green\n    secondary: '#8fbc8f', // Soft sage\n    background: '#f4f0ea', // Tatami / warm off-white\n    surface: '#e8e2d5', // Muted bamboo / clay\n    text: '#2c3531', // Deep charcoal / dark slate\n    textMuted: '#5a6b5c', // Muted forest green\n    border: '#d3c9b8', // Subtle earth border\n    accent: '#3e5c3e' // Deep tea leaf accent\n  }\n};\n\n// Add `teaCeremonyTheme` to the exported list of available themes",
+      "explanation": "Defines the color variables and metadata required for the 'Tea Ceremony' theme to render correctly across theme pickers and game views."
+    },
+    {
+      "file": "features/Preferences/data/wallpapers.ts",
+      "purpose": "Optionally link a matching wallpaper or background style for the Tea Ceremony theme.",
+      "before": "",
+      "after": "// Preliminary pseudocode based on repository analysis\nexport const teaCeremonyWallpaper = {\n  id: 'tea-ceremony-bg',\n  themeId: 'tea-ceremony',\n  name: 'Tea Ceremony Room',\n  src: '/wallpapers/tea-ceremony.webp'\n};",
+      "explanation": "Provides a default or themed wallpaper association for 'Tea Ceremony' when background images or glass mode are enabled."
+    }
+  ],
+  "tests": [
+    {
+      "file": "features/Preferences/__tests__/themes.test.ts",
+      "description": "Ensure 'tea-ceremony' theme is defined, exported, and includes all required color properties.",
+      "code": "describe('Themes', () => {\n  it('should include tea-ceremony theme with all required properties', () => {\n    const teaCeremony = themes.find((t) => t.id === 'tea-ceremony');\n    expect(teaCeremony).toBeDefined();\n    expect(teaCeremony?.name).toBe('Tea Ceremony');\n    expect(teaCeremony?.colors.primary).toBeTruthy();\n    expect(teaCeremony?.colors.background).toBeTruthy();\n  });\n});"
+    }
+  ],
+  "verificationSteps": [
+    "Run type checks and linter (e.g., `npm run check` or `npx tsc --noEmit`) to verify TypeScript type conformity for the new theme object.",
+    "Run unit tests (e.g., `npm test`) to confirm theme registration and schema validation pass.",
+    "Launch the local development server (`npm run dev`) and navigate to Settings / Preferences.",
+    "Select 'Tea Ceremony' theme and verify UI rendering across Kana, Kanji, and Vocabulary game modes.",
+    "Check text contrast against background and surface elements to ensure WCAG AA accessibility standards are met."
+  ],
+  "warnings": [
+    "This proposal is preliminary because source files were not provided in the environment. Do not apply directly without checking existing `Theme` TypeScript interface declarations.",
+    "Ensure color contrast ratios meet accessibility standards for both light/default mode and glass mode implementations."
+  ]
+}
